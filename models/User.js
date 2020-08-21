@@ -7,3 +7,6 @@ const userSchema = new Schema({
 })
 
 mongoose.model('users',userSchema);
+
+
+//model that creates a collection inside the database created

@@ -17,3 +17,5 @@ module.exports = (app) =>{
     })
     
 };
+
+//routes to get certain action completed//

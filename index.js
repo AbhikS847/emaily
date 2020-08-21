@@ -24,3 +24,4 @@ mongoose.connect(keys.mongoURI);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {console.log(`Server is running on ${PORT}`)});
 
+//the index file, initializes all the processes
