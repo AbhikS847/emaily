@@ -4,19 +4,12 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
+import Dashboard from './Dashboard';
 
 const SurveyNew = () =>{
     return(
         <div>
             <h2>New survey page</h2>
-        </div>
-    )
-}
-
-const Dashboard = () =>{
-    return(
-        <div>
-            <h2>Dashboard page</h2>
         </div>
     )
 }
