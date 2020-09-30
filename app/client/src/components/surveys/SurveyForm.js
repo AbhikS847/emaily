@@ -5,10 +5,10 @@ import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
 const FIELDS = [
-    {label:'Survey Title', name:'title'},
-    {label:'Subject line',name:'subject'},
-    {label:'Email body',name:'body'},
-    {label:'Recipient list',name:'emails'}
+    {label:'Survey Title', name:'title',noValueError:'Provide a survey title'},
+    {label:'Subject line',name:'subject',noValueError:'Provide a subject line please'},
+    {label:'Email body',name:'body',noValueError:'Provide an email body'},
+    {label:'Recipient list',name:'emails',noValueError:'Provide a valid email'}
 ];
 
 
@@ -35,11 +35,11 @@ class SurveyForm extends React.Component{
 
 function validate(values){
     const errors = {};
-
-    if(!values.title){
-        errors.title = "You must provide a title";
-        
-    }
+    _.each(FIELDS,({name,noValueError})=>{
+        if(!values[name]){
+            errors[name] = noValueError
+        }
+    });
     return errors
 }
 
