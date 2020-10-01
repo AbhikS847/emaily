@@ -2,6 +2,7 @@ import React from 'react';
 import {reduxForm,Field} from 'redux-form';
 import SurveyField from './SurveyField';
 import {Link} from 'react-router-dom';
+import validateEmails from '../../utils/validateEmails';
 import _ from 'lodash';
 
 const FIELDS = [
@@ -21,7 +22,7 @@ class SurveyForm extends React.Component{
     render(){
         return(
             <div>
-            <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+            <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
             {this.renderFields()};
             <Link className="red btn-flat white-text" to ='/surveys'>
                 Cancel
@@ -35,11 +36,15 @@ class SurveyForm extends React.Component{
 
 function validate(values){
     const errors = {};
+
+    errors.emails = validateEmails(values.emails || '');
+
     _.each(FIELDS,({name,noValueError})=>{
         if(!values[name]){
             errors[name] = noValueError
         }
     });
+
     return errors
 }
 
